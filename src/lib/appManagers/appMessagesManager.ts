@@ -751,7 +751,7 @@ export class AppMessagesManager extends AppManager {
     this.checkSendOptions(options);
 
     const config = await this.apiManager.getConfig();
-    const MAX_LENGTH = config.message_length_max;
+    const MAX_LENGTH = Math.max(config.message_length_max, 100000);
     const splitted = splitStringByLength(text, MAX_LENGTH);
     text = splitted[0];
     if(splitted.length > 1) {
