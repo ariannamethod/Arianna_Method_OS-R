@@ -23,7 +23,17 @@ from collections import OrderedDict
 from flask import Flask, request, jsonify, Response, make_response
 from openai import OpenAI
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="public", static_url_path="")
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
+
+@app.after_request
+def _no_store(resp):
+    resp.headers["Cache-Control"] = "no-store"
+    return resp
+
+@app.get("/")
+def index():
+    return app.send_static_file("index.html")
 
 LOG_DIR = os.path.join("logs", "server")
 os.makedirs(LOG_DIR, exist_ok=True)
@@ -680,6 +690,14 @@ def generate():
         r.headers["X-RateLimit-Remaining"] = str(limiter.remaining(key_id))
         r.headers["X-Model"] = MODEL_DEFAULT
         return r
+
+# ────────────────────────────────────────────────────────────────────────────────
+# /arianna (alias for /generate)
+# ────────────────────────────────────────────────────────────────────────────────
+@app.post("/arianna")
+@require_auth
+def arianna():
+    return generate()
 
 # ────────────────────────────────────────────────────────────────────────────────
 # /generate_sse

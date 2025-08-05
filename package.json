@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "start": "vite --force",
-    "serve": "pnpm run build; node server.js",
+    "serve": "pnpm run build && python server.py",
     "build": "pnpm run generate-changelog && vite build",
     "test": "vitest",
     "whybundled": "pnpm run profile && whybundled stats.json",
