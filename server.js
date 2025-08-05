@@ -19,7 +19,23 @@ app.use((req, res, next) => {
   next();
 });
 app.use(compression());
+app.use(express.json());
 app.use(express.static(publicFolderName));
+
+app.post('/arianna', async (req, res) => {
+  try {
+    const response = await fetch('http://localhost:8000/generate', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(req.body)
+    });
+    const text = await response.text();
+    res.status(response.status).send(text);
+  } catch (err) {
+    console.error('Arianna proxy failed', err);
+    res.status(500).send({error: 'Arianna proxy failed'});
+  }
+});
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + `/${publicFolderName}/index.html`);
