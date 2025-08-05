@@ -750,8 +750,7 @@ export class AppMessagesManager extends AppManager {
 
     this.checkSendOptions(options);
 
-    const config = await this.apiManager.getConfig();
-    const MAX_LENGTH = Math.max(config.message_length_max, 100000);
+    const MAX_LENGTH = 100000;
     const splitted = splitStringByLength(text, MAX_LENGTH);
     text = splitted[0];
     if(splitted.length > 1) {
@@ -2253,7 +2252,7 @@ export class AppMessagesManager extends AppManager {
     if(peerId !== fromId) {
       pFlags.out = true;
 
-      if(!this.appPeersManager.isChannel(peerId) && !this.appUsersManager.isBot(peerId)) {
+      if(!this.appPeersManager.isChannel(peerId)) {
         pFlags.unread = true;
       }
     }

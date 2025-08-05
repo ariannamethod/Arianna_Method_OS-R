@@ -3521,8 +3521,7 @@ export default class ChatInput {
       return;
     }
 
-    const config = await this.managers.apiManager.getConfig();
-    const maxLength = Math.max(config.message_length_max, 100000);
+    const maxLength = 100000;
     const splitted = splitStringByLength(value, maxLength);
 
     this.starsState.set({messageCount: splitted.length});
@@ -3596,8 +3595,7 @@ export default class ChatInput {
         }
       }
 
-      const config = await this.managers.apiManager.getConfig();
-      const MAX_LENGTH = Math.max(config.message_length_max, 100000);
+      const MAX_LENGTH = 100000;
       const textOverflow = value.length > MAX_LENGTH;
 
       messageCount += trimmedValue ?

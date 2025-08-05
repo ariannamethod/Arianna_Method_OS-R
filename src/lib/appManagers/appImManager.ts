@@ -2439,11 +2439,6 @@ export class AppImManager extends EventListenerBase<{
     // const log = this.log.bindPrefix('getPeerTyping-' + peerId);
     // log('getting peer typing');
 
-    const isUser = peerId.isUser();
-    if(isUser && await this.managers.appUsersManager.isBot(peerId)) {
-      // log('a bot');
-      return;
-    }
 
     const typings = await this.managers.appProfileManager.getPeerTypings(peerId, threadId);
     if(!typings?.length) {
