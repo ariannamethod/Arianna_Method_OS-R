@@ -7,6 +7,7 @@
 import type {MyDocument} from '../../lib/appManagers/appDocsManager';
 import type {MyDraftMessage} from '../../lib/appManagers/appDraftsManager';
 import type {AppMessagesManager, MessageSendingParams} from '../../lib/appManagers/appMessagesManager';
+import {MESSAGE_MAX_LENGTH} from '../../lib/appManagers/appMessagesManager';
 import type Chat from './chat';
 import {AppImManager, APP_TABS} from '../../lib/appManagers/appImManager';
 import '../../../public/recorder.min';
@@ -3521,8 +3522,7 @@ export default class ChatInput {
       return;
     }
 
-    const config = await this.managers.apiManager.getConfig();
-    const maxLength = Math.max(config.message_length_max, 100000);
+    const maxLength = MESSAGE_MAX_LENGTH;
     const splitted = splitStringByLength(value, maxLength);
 
     this.starsState.set({messageCount: splitted.length});
@@ -3596,8 +3596,7 @@ export default class ChatInput {
         }
       }
 
-      const config = await this.managers.apiManager.getConfig();
-      const MAX_LENGTH = Math.max(config.message_length_max, 100000);
+      const MAX_LENGTH = MESSAGE_MAX_LENGTH;
       const textOverflow = value.length > MAX_LENGTH;
 
       messageCount += trimmedValue ?
