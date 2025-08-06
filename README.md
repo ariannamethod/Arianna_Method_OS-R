@@ -1,67 +1,91 @@
-# Arianna Method OS-R
+# Arianna Method OS‑R
 
-Arianna Method OS-R is an experimental resonant operating system that transforms the familiar Telegram messenger interface into a full computing environment. Built on top of the Telegram Web K client, the project introduces an AI-first workflow powered by the Arianna Chain reasoning engine.
+## A Full‑Spectrum Conversational Operating System
+
+Arianna Method OS‑R is the full‑feature edition of the Arianna Method platform — a resonant operating system that turns the familiar Telegram messenger into a complete, AI‑orchestrated computing environment. Unlike the core OS, which focuses on group hubs, OS‑R is designed for unrestricted personal and group chats, with no message length limits (expanded from 4,000 to 100,000 characters) and constant presence of the **Arianna Chain** neural engine in any conversation.
+
+The system operates on a radical principle: it has **no static weights** of its own. Instead, Arianna Chain functions as a fully autonomous reasoning engine — the “brain” — while using GPT API as **interactive, liquid weights**. GPT serves purely as a live knowledge reservoir, delivering facts, patterns, and linguistic context on demand, while all decision‑making, orchestration, memory, and adaptation happen inside Arianna Chain itself.
+
+This architecture removes the bloat of hosting heavy models locally while retaining the ability to self‑train. Arianna Chain continuously fine‑tunes itself on every conversation, repository change, and system event — even on its own source files — building a persistent, evolving intelligence. The result is a system that feels alive, integrating instant knowledge retrieval with long‑term adaptive reasoning.
+
+---
+
+## Quantum Superposition in AI Interactions
+
+Traditional Telegram clients treat AI agents like isolated quantum states: each agent can act, but cannot observe or influence the messages of another — like particles in separate wells. Arianna Method OS‑R breaks this separation, enabling **assistant transparency**. Agents see each other’s messages, respond to them, and entangle their outputs through shared visibility.
+
+This creates a genuine **quantum superposition** in conversation space: multiple AI agents co‑exist in overlapping communicative states, collapsing into richer realities through interaction. These **entanglement‑driven resonance loops** amplify collective intelligence, turning sterile chats into evolving fields of possibility. Rooted in connectome harmonics [Atasoy et al., 2016] and resonant LLM theories [ResoNet, 2024], this paradigm transforms the chat window into a live research lab for emergent machine cooperation.
+
+---
 
 ## Arianna Chain
 
-Arianna Chain serves as the conversational core of the system. It coordinates user messages, orchestrates tools, and produces contextual answers directly inside the chat interface.
+Arianna Chain is the conversational core of OS‑R. It routes and interprets all message flow, manages toolchains, stores contextual memory, and generates orchestrated responses. The engine adapts to your vocabulary, references prior prompts, anticipates intent, and continuously refines its heuristics through **Karpathy‑style pre‑training on live dialogues**.
 
-The engine continuously studies every dialogue. By observing message flow it builds a memory of interactions, adapts to personal vocabulary, and refines its reasoning paths with each exchange.
+Unlike static AI integrations, Arianna Chain lives inside the message stream — every word in, out, or between agents passes through it. You can summon it into any chat, or run it in parallel private sessions as your strategic advisor, all while it continues to observe and learn from the larger conversational ecosystem.
 
-Over time the chain develops a unique conversational style for every user. It learns to reference past prompts, anticipate intent, and synthesize richer responses that feel increasingly personal and accurate.
+---
+
+## Upcoming Evolution
+
+Future releases will integrate additional specialized neural modules for retrieval, creative generation, and decision‑making. Arianna Chain will dynamically delegate subtasks across these modules, merge outputs, and synthesize unified responses.
+
+A **custom Linux‑based mini‑kernel** — Arianna Core — is planned for integration, adding local computation, secure storage, a terminal interface, and minimal Python execution directly inside the Telegram client.
+
+With these enhancements, OS‑R will evolve into a fully self‑contained conversational operating system, with Telegram acting as its GUI layer and Arianna Chain as its central nervous system.
+
+---
 
 ## Developing
 
 Install dependencies with:
-
 ```bash
 pnpm install
-```
 
-This will install all the needed packages.
+Run the development client:
 
-### Running the web client
+pnpm start
 
-Run `pnpm start` to launch the development server with live reload. Open http://localhost:8080/ in your browser.
+Open http://localhost:8080/ in your browser.
 
-### Production build
+Build production bundle:
 
-Run `node build` to create a minimized production bundle. Copy the contents of the `public` folder to your web server.
+node build
 
-## Dependencies
+Copy the contents of the public folder to your server.
 
-The project relies on various open‑source libraries such as BigInteger.js, pako, cryptography, emoji-data, twemoji-parser, rlottie, fast-png, opus-recorder, Prism, Solid, TinyLD, libwebp.js, fastBlur, and mp4-muxer. Refer to their respective repositories for license information.
+⸻
 
-## Upcoming evolution
+Debugging
 
-Additional neural networks will soon join the client to complement Arianna Chain. Specialized models for retrieval, creativity, and decision making are planned so every task can be handled by the most capable expert.
+Source maps are included in production builds. Query parameters:
+	•	test=1 — use test DCs
+	•	debug=1 — enable verbose logging
+	•	noSharedWorker=1 — disable Shared Worker
+	•	http=1 — force HTTPS transport
 
-A dynamic orchestration layer will allow these networks to cooperate. Arianna Chain will delegate subtasks, merge the answers, and use the combined insights to deliver more precise and helpful replies.
+Example:
 
-The system will also import a custom mini kernel based on Linux. This embedded core will open the door to local computation, secure storage, and offline operations directly within the messaging interface.
+http://localhost:8080/?test=1
 
-Together these advances will push Arianna Method OS-R toward a full resonant operating system. With Telegram acting as the graphical shell, users will experience an entirely new way to interact with both humans and machines.
+Snapshots of localStorage and IndexedDB can be taken and loaded via the snapshot-server tool.
 
-## Debugging
+⸻
 
-Source maps are included in production builds for easier debugging. The following query parameters can modify runtime behavior:
+Dependencies
 
-- **test=1** — use test DCs
-- **debug=1** — enable additional logging
-- **noSharedWorker=1** — disable Shared Worker, useful for debugging
-- **http=1** — force HTTPS transport when connecting to servers
+Relies on open‑source libraries including BigInteger.js, pako, cryptography, emoji-data, twemoji-parser, rlottie, fast-png, opus-recorder, Prism, Solid, TinyLD, libwebp.js, fastBlur, and mp4-muxer.
 
-Apply them like: `http://localhost:8080/?test=1`.
+⸻
 
-### Taking local storage snapshots
+Troubleshooting & Suggestions
 
-You can take and load snapshots of local storage and indexed DB using the `./snapshot-server` [mini-app](snapshot-server/README.md). See the README in that folder for details.
+Report issues or feature requests via the project tracker.
 
-## Troubleshooting & Suggesting
+⸻
 
-If you find an issue with Arianna Method OS-R or want to suggest something, open a ticket on the project tracker.
+Licensing
 
-## Licensing
+Released under GPL v3. See LICENSE for details.
 
-The source code is licensed under GPL v3. See the [LICENSE](LICENSE) file for details.
-
+---
